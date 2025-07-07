@@ -9,7 +9,7 @@ int solution(int n) {
     for(int i=1; i<n/2+1; i++) {
         int sum = i, j = i;
 
-        while(n >= sum) {
+        while(n > sum) {
             sum += ++j;
             if(sum == n)
                 count++;
