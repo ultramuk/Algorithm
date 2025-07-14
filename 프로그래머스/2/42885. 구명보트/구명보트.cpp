@@ -12,10 +12,9 @@ int solution(vector<int> people, int limit) {
     int answer = 0;
     
     while(left <= right) {
-        if(people[left] + people[right] <= limit)
+        if(people[left] + people[right--] <= limit)
             left++;
         
-        right--;
         answer++;        
     }    
     
