@@ -1,11 +1,11 @@
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 vector<int> solution(vector<string> name, vector<int> yearning, vector<vector<string>> photos) {
     vector<int> answer;
-    map<string, int> mp;
+    unordered_map<string, int> mp;
     
     for(int i=0; i<name.size(); ++i) {
         mp[name[i]] = yearning[i];
