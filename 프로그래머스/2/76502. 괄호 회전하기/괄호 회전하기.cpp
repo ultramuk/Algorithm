@@ -1,35 +1,24 @@
 #include <string>
 #include <vector>
 #include <stack>
-#include <iostream>
+#include <map>
 
 using namespace std;
 
 bool func(string& s) {
     stack<char> stk;
+    map<char, char> mp = {{'(',')'}, {'{','}'}, {'[',']'}};
     
     for(auto c : s) {
-        if(stk.empty() || c == '(' || c == '{' || c == '[') {
+        if(stk.empty() || mp.find(c) != mp.end()) {
             stk.push(c);
             continue;
         }
-        
-        if(c == ')') {
-            if(stk.top() == '(')
-                stk.pop();
-            else
-                return false;
-        } else if (c == '}') {
-            if(stk.top() == '{')
-                stk.pop();
-            else
-                return false;            
-        } else if (c == ']') {
-            if(stk.top() == '[')
-                stk.pop();
-            else
-                return false;
-        }
+
+        if(mp[stk.top()] == c)
+            stk.pop();
+        else
+            return false;
     }
     
     return stk.empty();
