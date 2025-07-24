@@ -37,15 +37,12 @@ bool func(string& s) {
 
 int solution(string s) {
     int answer = 0;
+    int n = s.length();
     
-    for(int i=0; i<s.length(); i++) {
-        string str = "";
-        for(int j = i; j < i+s.length(); j++) {
-            str += s[j % s.length()];
-        }
+    while(n--) {
+        if(func(s)) answer++;
         
-        if(func(str))
-            answer++;
+        s = s.substr(1) + s[0];
     }
     
     return answer;
