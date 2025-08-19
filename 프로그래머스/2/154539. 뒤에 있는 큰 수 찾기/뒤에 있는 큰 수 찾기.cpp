@@ -7,16 +7,14 @@ using namespace std;
 vector<int> solution(vector<int> numbers) {
     vector<int> answer(numbers.size(), -1);
     stack<int> stk;
-    
-    for(int i=numbers.size()-1; i>=0; i--) {
-        while(!stk.empty() && stk.top() <= numbers[i])
+
+    for(int i=0; i<numbers.size(); i++) {
+        while(!stk.empty() && numbers[stk.top()] < numbers[i]) {
+            answer[stk.top()] = numbers[i];
             stk.pop();
-        
-        if(!stk.empty())
-            answer[i] = stk.top();
-        
-        stk.push(numbers[i]);
+        }
+        stk.push(i);
     }
-    
+
     return answer;
 }
