@@ -5,10 +5,7 @@
 using namespace std;
 
 int solution(vector<int> scoville, int K) {
-    priority_queue<int, vector<int>, greater<int>> pq;
-    
-    for(auto s : scoville)
-        pq.push(s);
+    priority_queue<int, vector<int>, greater<int>> pq(scoville.begin(), scoville.end());
     
     int answer = 0;
     while(pq.top() < K) {
