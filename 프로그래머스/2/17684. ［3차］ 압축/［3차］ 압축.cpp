@@ -14,20 +14,16 @@ vector<int> solution(string msg) {
     }
     
     vector<int> answer;
-    string curr = "";
-    for(int i=0; i<msg.length(); i++) {
-        curr += msg[i];
+    for(int i = 0; i < msg.size();){
+        string str = "";
+        while(dict.find(str + msg[i]) != dict.end())
+            str += msg[i++];
+
+        answer.push_back(dict[str]);
         
-        if(dict.find(curr) == dict.end()) {
-            dict[curr] = num++;
-            curr = curr.substr(0, curr.length()-1);
-            
-            answer.push_back(dict[curr]);
-            curr = "";
-            i--;
-        }
+        if(i < msg.size())
+            dict[str + msg[i]] = dict.size() + 1;
     }
-    answer.push_back(dict[curr]);
     
     return answer;
 }
